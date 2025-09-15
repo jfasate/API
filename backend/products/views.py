@@ -22,8 +22,8 @@ class ProductListAPIView(generics.ListAPIView):
 class ProductListCreateAPIView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    authentication_classes = [authentication.SessionAuthentication]
-    permission_classes = [IsStaffEditorPermission]
+    #authentication_classes = [authentication.SessionAuthentication]
+    #permission_classes = [IsStaffEditorPermission]
 
 class ProductUpdateAPIView(generics.UpdateAPIView):
     queryset = Product.objects.all()
@@ -43,3 +43,10 @@ class ProductDeleteAPIView(generics.DestroyAPIView):
 
     def perform_destroy(self, instance):
         super().perform_destroy(instance)
+
+#Viewset
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAdminUser, IsStaffEditorPermission]
