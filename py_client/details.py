@@ -22,7 +22,7 @@ print(get_response.json())
 '''
 
 '''ListCreateAPIView'''
-get_response = requests.post(endpoint, json={"title": "ListCreateAPIView", "price": 72.00})
+get_response = requests.post(endpoint, json={"title": "ListCreateAPIView", "price": 72.00, "sale_price": 65.00})
 print(get_response.json())
 
 
